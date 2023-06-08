@@ -1,7 +1,14 @@
 import React from "react";
+import Navbar from "../components/navbar/Navbar";
+import Sidebar from "../components/sidebar/Sidebar";
 
 const Dashboard = () => {
-  return <div>dashboard</div>;
+  return (
+    <div>
+      <Navbar />
+      <Sidebar />
+    </div>
+  );
 };
 
 export default Dashboard;
