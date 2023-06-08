@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import { fetchProfiles } from "../Api/Api";
 import Navbar from "../components/navbar/Navbar";
 import Sidebar from "../components/sidebar/Sidebar";
 import ActivityChart from "../components/charts/ActivityChart";
@@ -6,7 +8,7 @@ import ProductsChart from "../components/charts/ProductsChart";
 import ScheduleCard from "../components/card/ScheduleCard";
 import InformationCard from "../components/card/InformationCard";
 
-const InfoCardDetails = [
+const InformationCardDetails = [
   {
     id: 1,
     title: "Total Revenues",
@@ -37,7 +39,7 @@ const InfoCardDetails = [
   },
 ];
 
-const EventCardDetails = [
+const ScheduleCardDetails = [
   {
     id: 1,
     title: "Meeting with suppliers from Kuta Bali",
@@ -54,6 +56,13 @@ const EventCardDetails = [
   },
 ];
 const Dashboard = () => {
+  useEffect(() => {
+    fetchProfiles()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <div className="flex p-4 lg:p-8 bg-[#F5F5F5]">
       <Navbar />
@@ -84,7 +93,7 @@ const Dashboard = () => {
         </div>
         {/*Info Card Section*/}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
-          {InfoCardDetails.map((ele) => {
+          {InformationCardDetails.map((ele) => {
             return <InformationCard key={ele.id} info={ele} />;
           })}
         </div>
@@ -117,7 +126,7 @@ const Dashboard = () => {
               <p className="text-xs text-[#858585]">See All &gt;</p>
             </div>
             <div>
-              {EventCardDetails.map((ele) => {
+              {ScheduleCardDetails.map((ele) => {
                 return <ScheduleCard key={ele.id} info={ele} />;
               })}
             </div>

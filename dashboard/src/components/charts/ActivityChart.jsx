@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import { fetchProfiles } from "../../Api/Api";
 import ReactApexChart from "react-apexcharts";
 const Options = {
   chart: {
@@ -38,6 +40,13 @@ const Options = {
   colors: ["#E9A0A0", "#9BDD7C"],
 };
 const ActivityChart = () => {
+  useEffect(() => {
+    fetchProfiles()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   const Data = [
     {
       name: "Guest",
