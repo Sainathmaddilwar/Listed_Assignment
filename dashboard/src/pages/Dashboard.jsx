@@ -87,7 +87,7 @@ const Dashboard = () => {
               <img src="../assets/notify.svg" alt="Notification" />
             </button>
             <button className="mx-5">
-              <img src="../assets/Profile_picture.svg" alt="Profile" />
+              <img src="../assets/profile_picture.svg" alt="Profile" />
             </button>
           </div>
         </div>
